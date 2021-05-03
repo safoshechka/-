@@ -1,0 +1,34 @@
+int max(int v1, int v2, int v3, int v4)
+{
+	int maxValue = 0;
+	maxValue = fmax(maxValue,v1);
+	maxValue = fmax(maxValue,v2);
+	maxValue = fmax(maxValue,v3);
+	maxValue = fmax(maxValue,v4);
+	return maxValue;
+}
+
+int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+    int width1 = abs(A - C);
+	int width2 = abs(E - G);
+	int totalWidth = max(abs(A - G), abs(E - C), width1, width2);
+	int widthIntersected = width1 + width2 - totalWidth;
+	
+	int height1 = abs(B - D);
+	int height2 = abs(F - H);
+	int totalHeight = max(abs(B - H), abs(D - F), height1, height2);
+	int heightIntersected = height1 + height2 - totalHeight;
+	
+	int area1 = width1 * height1;
+	int area2 = width2 * height2;
+	
+	
+	if(widthIntersected <= 0 || heightIntersected <= 0)
+	{
+		return area1 + area2;
+	}
+	else
+	{
+		return area1 + area2 - widthIntersected * heightIntersected;
+	}
+}
